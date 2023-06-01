@@ -29,5 +29,5 @@ Run the container
 cp ~/.Xauthority ./env
 docker run --rm -it --network=host --privileged -e DISPLAY=$DISPLAY -e LOCAL_UID=$(id -u) -v `pwd`/env:/home/hls4ml-user/env:rw -v `pwd`/work:/home/hls4ml-user/work hls4ml:latest
 # in container test X forwarding
-docker-user@etc-gpu-09:~$ xclock
+hls4ml-user@etc-gpu-09:~$ xclock
 ```
