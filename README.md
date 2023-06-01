@@ -1,8 +1,4 @@
-# Docker template
-
-Following the template should give you
-- X forwarding
-- Directories mounted in the container that maintain ownership of host id
+# hls4ml-docker
 
 Make sure docker is configured for our proxy.
 ```
@@ -23,7 +19,10 @@ Build the docker image
 docker build --rm --pull -f ./Dockerfile -t hls4ml:latest .
 ```
 
-Run the container
+Run the container with
+- X forwarding
+- Directories mounted in the container that maintain ownership of host id
+
 ```
 # for X forwarding to work
 cp ~/.Xauthority ./env
