@@ -1,0 +1,14 @@
+# spack stuff
+#export SPACK_ROOT=/home/hls4ml-user/spack
+#. ${SPACK_ROOT}/share/spack/setup-env.sh
+#. /usr/share/modules/init/bash
+#. ${SPACK_ROOT}/var/spack/environments/docker/loads
+
+echo "Setting up X forwarding"
+XAUTH=/home/hls4ml-user/env/.Xauthority
+if test -f "$XAUTH"; then
+    echo "Setting XAUTHORITY to $XAUTH"
+    export XAUTHORITY=$XAUTH
+else
+    echo "File $XAUTH not found. Skipping X forwarding."
+fi
