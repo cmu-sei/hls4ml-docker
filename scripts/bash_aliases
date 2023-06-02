@@ -1,8 +1,5 @@
-# spack stuff
-#export SPACK_ROOT=/home/hls4ml-user/spack
-#. ${SPACK_ROOT}/share/spack/setup-env.sh
-#. /usr/share/modules/init/bash
-#. ${SPACK_ROOT}/var/spack/environments/docker/loads
+CONDAPATH=/home/hls4ml-user/miniconda3
+source ${CONDAPATH}/etc/profile.d/conda.sh
 
 echo "Setting up X forwarding"
 XAUTH=/home/hls4ml-user/env/.Xauthority

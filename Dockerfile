@@ -9,6 +9,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y \
+    curl \
     emacs \
     git \
     python3 \
@@ -26,17 +27,32 @@ WORKDIR ${HLS4MLHOME}
 USER hls4ml-user
 
 # pytorch-iris needs pytorch and tqdm. other requirements loaded by hls4ml
-RUN pip install torch==2.0.1 tqdm && \
+ARG CONDAPATH=/home/hls4ml-user/miniconda3
+RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o Miniconda3-latest-Linux-x86_64.sh && \
+    bash Miniconda3-latest-Linux-x86_64.sh -b && \
+    source ${CONDAPATH}/etc/profile.d/conda.sh && \
+    conda init bash && \
+    conda update -n base -c defaults conda && \
+    conda create --name tf python=3.10 && \
+    conda activate tf && \
+    pip install --user --upgrade pip && \
+    pip install --user \
+    pyparsing \
+    tensorflow==2.12.* \
+    tensorrt \
+    torch==2.0.1 \
+    tqdm && \
     git clone https://github.com/hls-fpga-machine-learning/hls4ml.git && \
     cd hls4ml && \
-    pip install hls4ml[profiling]
+    pip install --user .
 
 # add files. .bash_aliases gets sourced from the su command in entrypoint.sh
 ADD scripts ./scripts
 COPY ./scripts/bash_aliases ${HLS4MLHOME}/.bash_aliases
+RUN echo "conda activate tf" >> ${HLS4MLHOME}/.bashrc
 
 # create directories to mount
-RUN mkdir ${HLS4MLHOME}/results
+RUN mkdir ${HLS4MLHOME}/work
 
 # go in as root and change user in entrypoint.sh
 USER root
