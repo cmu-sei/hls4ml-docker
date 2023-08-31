@@ -12,7 +12,9 @@ groupmod -g ${GID} hls4ml-user
 usermod -d /home/hls4ml-user hls4ml-user
 
 echo "Setting permissions. This can take a few minutes."
-chown -R hls4ml-user:hls4ml-user /home/hls4ml-user/
+chown hls4ml-user:hls4ml-user /home/hls4ml-user
+chown -R espuser:espuser /home/hls4ml-user/env
+chown -R espuser:espuser /home/hls4ml-user/work
 
 # change user
 echo "Changing to hls4ml-user."
