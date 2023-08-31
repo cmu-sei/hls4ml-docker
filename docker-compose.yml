@@ -1,0 +1,23 @@
+services:
+  hls4ml:
+    build: .
+    command: /bin/bash
+    depends_on:
+      - vivado
+    environment:
+      - DISPLAY
+    image: hls4ml:latest
+    network_mode: host
+    privileged: true
+    volumes:
+      - ./env:/home/hls4ml-user/env
+      - ./work:/home/hls4ml-user/work
+      - xilinx:/tools:rw
+
+  vivado:
+    image: vivado:18.04_2019.2
+    volumes:
+      - xilinx:/tools:rw
+
+volumes:
+  xilinx:

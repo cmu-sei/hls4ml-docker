@@ -12,6 +12,7 @@ RUN apt-get update \
     curl \
     emacs \
     git \
+    graphviz \
     python3 \
     python3-pip \
     python3-tk \
@@ -33,10 +34,13 @@ RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -
     source ${CONDAPATH}/etc/profile.d/conda.sh && \
     conda init bash && \
     conda update -n base -c defaults conda && \
-    conda create --name tf python=3.10 && \
-    conda activate tf && \
-    pip install --user --upgrade pip && \
-    pip install --user \
+    conda create --name hls4ml python=3.10 && \
+    conda activate hls4ml && \
+    pip install --upgrade pip && \
+    pip install \
+    matplotlib \
+    numpy \
+    pydot \
     pyparsing \
     tensorflow==2.12.* \
     tensorrt \
@@ -44,12 +48,12 @@ RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -
     tqdm && \
     git clone https://github.com/hls-fpga-machine-learning/hls4ml.git && \
     cd hls4ml && \
-    pip install --user .
+    pip install .
 
 # add files. .bash_aliases gets sourced from the su command in entrypoint.sh
 ADD scripts ./scripts
 COPY ./scripts/bash_aliases ${HLS4MLHOME}/.bash_aliases
-RUN echo "conda activate tf" >> ${HLS4MLHOME}/.bashrc
+RUN echo "conda activate hls4ml" >> ${HLS4MLHOME}/.bashrc
 
 # create directories to mount
 RUN mkdir ${HLS4MLHOME}/work

@@ -1,5 +1,6 @@
-CONDAPATH=/home/hls4ml-user/miniconda3
-source ${CONDAPATH}/etc/profile.d/conda.sh
+export XILINXD_LICENSE_FILE=/home/hls4ml-user/env/Xilinx.lic
+export VIVADO_PATH=/tools/Xilinx/Vivado/2019.2
+. ${VIVADO_PATH}/settings64.sh
 
 echo "Setting up X forwarding"
 XAUTH=/home/hls4ml-user/env/.Xauthority
