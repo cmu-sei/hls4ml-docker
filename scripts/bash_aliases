@@ -32,6 +32,7 @@ export VIVADO_PATH=/tools/Xilinx/Vivado/2019.2
 . ${VIVADO_PATH}/settings64.sh
 
 export CPATH=/usr/include/x86_64-linux-gnu
+export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu
 
 echo "Setting up X forwarding"
 XAUTH=/home/hls4ml-user/env/.Xauthority
