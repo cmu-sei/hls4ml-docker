@@ -83,6 +83,10 @@ RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -
     tqdm && \
     git clone https://github.com/hls-fpga-machine-learning/hls4ml.git && \
     cd hls4ml && \
+    pip install . && \
+    cd ../ && \
+    git clone https://github.com/TorchDSP/torchsig.git && \
+    cd torchsig && \
     pip install .
 
 # add files. .bash_aliases gets sourced from the su command in entrypoint.sh
