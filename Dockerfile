@@ -40,16 +40,16 @@ RUN apt-get update \
     && apt-get install -y \
     curl \
     emacs \
-    vim \
     git \
     graphviz \
+    libprotobuf-dev \
+    protobuf-compiler \
     python3 \
     python3-pip \
     python3-tk \
     sudo \
-    x11-apps \
-    libprotobuf-dev \
-    protobuf-compiler
+    vim \
+    x11-apps
 
 # set up a user
 RUN useradd -l -ms /bin/bash hls4ml-user && \
@@ -70,12 +70,12 @@ RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -
     conda activate hls4ml && \
     pip install --upgrade pip && \
     pip install \
-    pandas \
     matplotlib \
     numpy \
-    pydot \
     onnx \
     onnxruntime \
+    pandas \
+    pydot \
     pyparsing \
     tensorflow==2.12.* \
     tensorrt \
