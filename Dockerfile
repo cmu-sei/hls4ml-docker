@@ -77,6 +77,7 @@ RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -
     pandas \
     pydot \
     pyparsing \
+    sigmf \
     tensorflow==2.12.* \
     tensorrt \
     torch==2.0.1 \
