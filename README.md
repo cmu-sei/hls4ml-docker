@@ -24,7 +24,7 @@ cp /path/to/Xilinx.lic ./env
 # for X forwarding to work
 cp ~/.Xauthority ./env
 # preferred
-docker compose run -e UID=$(id -u) -e GID=$(id -g) hls4ml
+docker compose run --rm -e UID=$(id -u) -e GID=$(id -g) hls4ml
 # or without compose. To run the synthesis tools must have vivado configured.
 docker run --rm -it --network=host --privileged -e DISPLAY=$DISPLAY -e UID=$(id -u) -e GID=$(id -g) -v`pwd`/env:/home/hls4ml-user/env:rw -v`pwd`/work:/home/hls4ml-user/work hls4ml:latest
 # in container test X forwarding
