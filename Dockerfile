@@ -17,6 +17,7 @@ RUN apt-get update \
     protobuf-compiler \
     python3 \
     python3-pip \
+    python3-pytest \
     python3-tk \
     sudo \
     vim \
@@ -48,6 +49,7 @@ RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -
     pandas \
     pydot \
     pyparsing \
+    qonnx \
     sigmf \
     tensorflow==2.12.* \
     tensorrt \
