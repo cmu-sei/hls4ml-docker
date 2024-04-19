@@ -52,13 +52,15 @@ RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -
     tensorflow==2.12.* \
     tensorrt \
     torch==2.0.1 \
-    tqdm && \
-    git clone https://github.com/hls-fpga-machine-learning/hls4ml.git && \
+    tqdm
+
+RUN source ${CONDAPATH}/etc/profile.d/conda.sh && \
+    conda init bash && \
+    conda activate hls4ml && \
+    git clone https://github.com/jmitrevs/hls4ml.git && \
     cd hls4ml && \
-    pip install . && \
-    cd ../ && \
-    git clone https://github.com/TorchDSP/torchsig.git && \
-    cd torchsig && \
+    git checkout qonnx-1p0 && \
+    git submodule update --init && \
     pip install .
 
 # add files. .bash_aliases gets sourced from the su command in entrypoint.sh

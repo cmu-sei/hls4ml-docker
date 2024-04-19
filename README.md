@@ -4,7 +4,7 @@ Build the docker image
 ```
 docker compose build hls4ml
 # or
-docker build --rm --pull -f ./Dockerfile -t hls4ml:latest .
+docker build --rm --pull -f ./Dockerfile -t hls4ml:onnx .
 ```
 
 Put some work in work
@@ -26,7 +26,7 @@ cp ~/.Xauthority ./env
 # preferred
 docker compose run --rm -e UID=$(id -u) -e GID=$(id -g) hls4ml
 # or without compose. To run the synthesis tools must have vivado configured.
-docker run --rm -it --network=host --privileged -e DISPLAY=$DISPLAY -e UID=$(id -u) -e GID=$(id -g) -v`pwd`/env:/home/hls4ml-user/env:rw -v`pwd`/work:/home/hls4ml-user/work hls4ml:latest
+docker run --rm -it --network=host --privileged -e DISPLAY=$DISPLAY -e UID=$(id -u) -e GID=$(id -g) -v`pwd`/env:/home/hls4ml-user/env:rw -v`pwd`/work:/home/hls4ml-user/work hls4ml:onnx
 # in container test X forwarding
 hls4ml-user@etc-gpu-09:~$ xclock
 ```
