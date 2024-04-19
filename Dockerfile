@@ -59,6 +59,7 @@ RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -
 RUN source ${CONDAPATH}/etc/profile.d/conda.sh && \
     conda init bash && \
     conda activate hls4ml && \
+    git clone https://github.com/fastmachinelearning/qonnx_model_zoo.git && \
     git clone https://github.com/jmitrevs/hls4ml.git && \
     cd hls4ml && \
     git checkout qonnx-1p0 && \
