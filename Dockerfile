@@ -43,8 +43,9 @@ RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -
     pip install \
     matplotlib \
     numpy \
-    onnx \
-    onnxruntime \
+    onnx==1.15 \
+    onnxruntime==1.17 \
+    ortools \
     pandas \
     pydot \
     pyparsing \
