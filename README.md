@@ -31,3 +31,10 @@ docker run --rm -it --network=host --privileged -e DISPLAY=$DISPLAY -e UID=$(id 
 cd hls4ml
 python -m pytest test
 ```
+
+```
+cd work
+python -m test_network.py
+cd hls4mlprj_qonnx_network_Vivado
+vivado_hls -f build_prj.tcl 'csim=1 synth=1 cosim=1 validation=1'
+```

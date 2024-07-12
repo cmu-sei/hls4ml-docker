@@ -4,9 +4,17 @@ services:
     command: /bin/bash
     depends_on:
       - xilinx
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
     environment:
       - DISPLAY
     image: hls4ml:onnx
+    init: true
     network_mode: host
     privileged: true
     volumes:
