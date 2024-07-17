@@ -42,12 +42,14 @@ RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -
     numpy \
     pydot \
     pyparsing \
+    pytest \
     tensorflow==2.12.* \
     tensorrt \
     torch==2.0.1 \
     tqdm && \
     git clone https://github.com/hls-fpga-machine-learning/hls4ml.git && \
     cd hls4ml && \
+    git submodule update --init && \
     pip install .
 
 # add files. .bash_aliases gets sourced from the su command in entrypoint.sh

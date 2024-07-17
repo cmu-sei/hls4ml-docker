@@ -3,10 +3,18 @@ services:
     build: .
     command: /bin/bash
     depends_on:
-      - vivado
+      - xilinx
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
     environment:
       - DISPLAY
     image: hls4ml:latest
+    init: true
     network_mode: host
     privileged: true
     volumes:
@@ -14,10 +22,10 @@ services:
       - ./work:/home/hls4ml-user/work
       - xilinx:/tools:rw
 
-  vivado:
-    image: vivado:18.04_2019.2
+  xilinx:
+    image: xilinx:18.04_2019.2
     volumes:
       - xilinx:/tools:rw
 
 volumes:
-  xilinx:
+  xilinx: {}

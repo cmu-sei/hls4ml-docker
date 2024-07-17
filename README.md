@@ -30,3 +30,15 @@ docker run --rm -it --network=host --privileged -e DISPLAY=$DISPLAY -e UID=$(id 
 # in container test X forwarding
 hls4ml-user@etc-gpu-09:~$ xclock
 ```
+
+```
+cd work
+python -m test_network.py
+cd hls4mlprj_network_Vivado
+vivado_hls -f build_prj.tcl 'csim=1 synth=1 cosim=1 validation=1'
+
+# within hls4ml itself
+cd hls4ml/test/pytest
+# for pytest, use --co to get test names, then something like
+python -m pytest test_pytorch_api.py -rP -k 'test_conv2d[io_stream-Vivado-1]'
+```

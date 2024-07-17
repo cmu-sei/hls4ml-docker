@@ -16,6 +16,7 @@ chown hls4ml-user:hls4ml-user /home/hls4ml-user
 chown hls4ml-user:hls4ml-user /home/hls4ml-user/.bash_aliases
 chown -R hls4ml-user:hls4ml-user /home/hls4ml-user/.cache
 chown -R hls4ml-user:hls4ml-user /home/hls4ml-user/env
+chown -R hls4ml-user:hls4ml-user /home/hls4ml-user/hls4ml
 chown -R hls4ml-user:hls4ml-user /home/hls4ml-user/work
 
 # change user
