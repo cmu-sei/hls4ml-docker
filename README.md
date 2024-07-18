@@ -42,3 +42,32 @@ cd hls4ml/test/pytest
 # for pytest, use --co to get test names, then something like
 python -m pytest test_pytorch_api.py -rP -k 'test_conv2d[io_stream-Vivado-1]'
 ```
+
+```
+diff --git a/hls4ml/converters/pytorch_to_hls.py b/hls4ml/converters/pytorch_to_hls.py
+index afa87365..282d063e 100644
+--- a/hls4ml/converters/pytorch_to_hls.py
++++ b/hls4ml/converters/pytorch_to_hls.py
+@@ -309,6 +309,9 @@ def pytorch_to_hls(config):
+             if operation in layer_name_map:
+                 operation = layer_name_map[operation]
+
++            if operation == 'view':
++                operation = 'View'
++
+             # only a limited number of functions are supported
+             if operation not in supported_layers:
+                 raise Exception(f'Unsupported function {operation}')
+```
+
+```
+# when you quit use down to stop dependencies
+docker compose down
+# pruning can come in handy
+docker system prune
+docker network prune
+# if you've recently changed the xilinx image you might need to nuke the old
+# xilinx volume to create the correct new one. Creating the volume takes a
+# long time, so only delete the old volume if you really need to.
+docker volume prune --all
+```

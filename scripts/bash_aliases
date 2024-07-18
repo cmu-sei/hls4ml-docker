@@ -1,5 +1,5 @@
 export XILINXD_LICENSE_FILE=/home/hls4ml-user/env/Xilinx.lic
-export VIVADO_PATH=/tools/Xilinx/Vivado/2019.2
+export VIVADO_PATH=/tools/Xilinx/Vivado/2020.1
 . ${VIVADO_PATH}/settings64.sh
 
 export CPATH=/usr/include/x86_64-linux-gnu

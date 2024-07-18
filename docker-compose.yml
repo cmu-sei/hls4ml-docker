@@ -23,7 +23,7 @@ services:
       - xilinx:/tools:rw
 
   xilinx:
-    image: xilinx:18.04_2019.2
+    image: xilinx:18.04_2020.1
     volumes:
       - xilinx:/tools:rw
 
