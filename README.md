@@ -44,23 +44,6 @@ python -m pytest test_pytorch_api.py -rP -k 'test_conv2d[io_stream-Vivado-1]'
 ```
 
 ```
-diff --git a/hls4ml/converters/pytorch_to_hls.py b/hls4ml/converters/pytorch_to_hls.py
-index afa87365..282d063e 100644
---- a/hls4ml/converters/pytorch_to_hls.py
-+++ b/hls4ml/converters/pytorch_to_hls.py
-@@ -309,6 +309,9 @@ def pytorch_to_hls(config):
-             if operation in layer_name_map:
-                 operation = layer_name_map[operation]
-
-+            if operation == 'view':
-+                operation = 'View'
-+
-             # only a limited number of functions are supported
-             if operation not in supported_layers:
-                 raise Exception(f'Unsupported function {operation}')
-```
-
-```
 # when you quit use down to stop dependencies
 docker compose down
 # pruning can come in handy
