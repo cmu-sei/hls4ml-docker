@@ -17,7 +17,8 @@ RUN apt-get update \
     python3-pip \
     python3-tk \
     sudo \
-    x11-apps
+    x11-apps \
+    vim
 
 # set up a user
 RUN useradd -l -ms /bin/bash hls4ml-user && \
@@ -41,13 +42,15 @@ RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -
     matplotlib \
     numpy \
     pydot \
+    pre-commit \
     pyparsing \
     pytest \
     tensorflow==2.12.* \
     tensorrt \
+    pdbpp \
     torch==2.0.1 \
     tqdm && \
-    git clone https://github.com/hls-fpga-machine-learning/hls4ml.git && \
+    git clone https://github.com/sei-rquartiano/hls4ml.git && \
     cd hls4ml && \
     git submodule update --init && \
     pip install .
@@ -62,5 +65,8 @@ RUN mkdir ${HLS4MLHOME}/work
 
 # go in as root and change user in entrypoint.sh
 USER root
+
+RUN apt-get install -y vim
+
 # set entrypoint
 ENTRYPOINT ["./scripts/entrypoint.sh"]
