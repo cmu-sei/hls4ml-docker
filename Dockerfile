@@ -11,6 +11,7 @@ RUN apt-get update \
     && apt-get install -y \
     curl \
     emacs \
+    gdb \
     git \
     graphviz \
     python3 \
@@ -50,7 +51,7 @@ RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -
     pdbpp \
     torch==2.0.1 \
     tqdm && \
-    git clone https://github.com/sei-rquartiano/hls4ml.git && \
+    git clone https://github.com/sei-jgwohlbier/hls4ml.git && \
     cd hls4ml && \
     git submodule update --init && \
     pip install .
