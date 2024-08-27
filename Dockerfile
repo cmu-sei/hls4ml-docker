@@ -11,15 +11,14 @@ RUN apt-get update \
     && apt-get install -y \
     curl \
     emacs \
-    gdb \
     git \
     graphviz \
     python3 \
     python3-pip \
     python3-tk \
     sudo \
-    x11-apps \
-    vim
+    vim \
+    x11-apps
 
 # set up a user
 RUN useradd -l -ms /bin/bash hls4ml-user && \
@@ -66,8 +65,6 @@ RUN mkdir ${HLS4MLHOME}/work
 
 # go in as root and change user in entrypoint.sh
 USER root
-
-RUN apt-get install -y vim
 
 # set entrypoint
 ENTRYPOINT ["./scripts/entrypoint.sh"]

@@ -4,6 +4,13 @@ services:
     command: /bin/bash
     depends_on:
       - xilinx
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
     environment:
       - DISPLAY
     image: hls4ml:forked
@@ -16,7 +23,7 @@ services:
       - xilinx:/tools:rw
 
   xilinx:
-    image: xilinx:18.04_2019.2
+    image: xilinx:18.04_2020.1
     volumes:
       - xilinx:/tools:rw
 
