@@ -41,19 +41,20 @@ RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -
     pip install \
     matplotlib \
     numpy \
-    pydot \
+    pdbpp \
     pre-commit \
+    pydot \
     pyparsing \
     pytest \
     tensorflow==2.12.* \
     tensorrt \
-    pdbpp \
     torch==2.0.1 \
+    torchsummary \
     tqdm && \
     git clone https://github.com/sei-jgwohlbier/hls4ml.git && \
     cd hls4ml && \
     git submodule update --init && \
-    pip install .
+    pip install hls4ml[profiling] .
 
 # add files. .bash_aliases gets sourced from the su command in entrypoint.sh
 ADD scripts ./scripts
