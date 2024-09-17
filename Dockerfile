@@ -19,7 +19,8 @@ RUN apt-get update \
     python3-tk \
     sudo \
     vim \
-    x11-apps && \
+    x11-apps \
+    zip && \
     locale-gen en_US.UTF-8
 
 # set up a user
