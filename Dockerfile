@@ -13,12 +13,14 @@ RUN apt-get update \
     emacs \
     git \
     graphviz \
+    locales \
     python3 \
     python3-pip \
     python3-tk \
     sudo \
     vim \
-    x11-apps
+    x11-apps && \
+    locale-gen en_US.UTF-8
 
 # set up a user
 RUN useradd -l -ms /bin/bash hls4ml-user && \
