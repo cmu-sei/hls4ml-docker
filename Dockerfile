@@ -13,11 +13,15 @@ RUN apt-get update \
     emacs \
     git \
     graphviz \
+    locales \
     python3 \
     python3-pip \
     python3-tk \
     sudo \
-    x11-apps
+    vim \
+    x11-apps \
+    zip && \
+    locale-gen en_US.UTF-8
 
 # set up a user
 RUN useradd -l -ms /bin/bash hls4ml-user && \
@@ -40,17 +44,20 @@ RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -
     pip install \
     matplotlib \
     numpy \
+    pdbpp \
+    pre-commit \
     pydot \
     pyparsing \
     pytest \
     tensorflow==2.12.* \
     tensorrt \
     torch==2.0.1 \
+    torchinfo \
     tqdm && \
     git clone https://github.com/hls-fpga-machine-learning/hls4ml.git && \
     cd hls4ml && \
     git submodule update --init && \
-    pip install .
+    pip install hls4ml[profiling] .
 
 # add files. .bash_aliases gets sourced from the su command in entrypoint.sh
 ADD scripts ./scripts
