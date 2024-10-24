@@ -57,6 +57,7 @@ RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -
     git clone https://github.com/sei-jgwohlbier/hls4ml.git && \
     cd hls4ml && \
     git submodule update --init && \
+    git checkout jgwhacks && \
     pip install hls4ml[profiling] .
 
 # add files. .bash_aliases gets sourced from the su command in entrypoint.sh
