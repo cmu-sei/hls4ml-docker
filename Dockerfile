@@ -53,7 +53,11 @@ RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -
     tensorrt \
     torch==2.0.1 \
     torchinfo \
-    tqdm && \
+    tqdm
+
+RUN source ${CONDAPATH}/etc/profile.d/conda.sh && \
+    conda init bash && \
+    conda activate hls4ml && \
     git clone https://github.com/hls-fpga-machine-learning/hls4ml.git && \
     cd hls4ml && \
     git submodule update --init && \
